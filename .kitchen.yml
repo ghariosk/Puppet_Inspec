@@ -1,0 +1,23 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: puppet_apply
+  manifests_path: manifests
+  modules_path: modules
+  hiera_data_path: hieradata
+
+platforms:
+  - name: centos/7
+
+verifier:
+  name: inspec
+
+suites:
+  - name: default
+    run_list:
+    attributes:
+      inspec_tests:
+        - test/integration/default
+
