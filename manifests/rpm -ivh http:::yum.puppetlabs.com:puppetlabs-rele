@@ -1,0 +1,24 @@
+#!/bin/bash
+
+sudo su root
+rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
+
+yum install puppet-server -y
+
+
+puppet resource package puppet-server ensure=latest
+
+
+/etc/init.d/puppetmaster restart
+
+
+yum install puppet
+
+puppet resource package puppet ensure=latest
+
+
+
+/etc/init.d/puppet restart
+
+
+
